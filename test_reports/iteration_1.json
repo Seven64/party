@@ -1,0 +1,30 @@
+{
+  "summary": "First-finish smoke test for QueueBeats MVP. All backend endpoints (admin auth, parties CRUD, ytmusicapi search, queue add/next/delete) and the primary UI flow (landing -> admin login -> dashboard -> create party -> host control -> guest join -> search -> add to queue -> queue tab) work correctly against the public REACT_APP_BACKEND_URL.",
+  "tested_scope": ["frontend", "backend", "auth", "integration"],
+  "passed": [
+    "POST /api/admin/login: wrong password -> 401 with 'Falsches Passwort'; correct 'ADMIN' -> 200 with token",
+    "GET /api/admin/verify: no token -> 401; Bearer token -> 200 {ok:true}",
+    "POST /api/parties (auth) creates 8-char hex id; GET /api/parties lists; GET /api/parties/:id returns single; DELETE /api/parties/:id -> {ok:true}",
+    "GET /api/search?q=daft%20punk returns list with videoId/title/artist/thumbnail/duration",
+    "POST /api/parties/:id/queue with guest_name works; ordering: unplayed priority first, then normal by added_at ASC, played last",
+    "POST /api/parties/:id/queue/next marks head as played and returns new head (admin auth); DELETE /api/parties/:id/queue/:item_id -> {ok:true}",
+    "Landing page loads with landing-host-login-btn and landing-start-party-btn",
+    "/admin: wrong password shows error toast; ADMIN navigates to /admin/dashboard",
+    "/admin/dashboard: create party via admin-new-party-input + admin-create-party-btn shows party card",
+    "/admin/party/:id renders youtube-player container",
+    "/party/:id guest-name-input + guest-join-btn -> /party/:id/room",
+    "Guest search returns 20 results; clicking a result opens drawer with guest-add-normal-btn + guest-add-priority-btn; adding a song shows toast 'Zur Queue hinzugefügt' and it appears in Queue tab (as Now Playing when first item)"
+  ],
+  "failed": [],
+  "action_items": [
+    "Optional: consider clearing residual test parties from SQLite (Test, Test Party, UI Test Party) before demo; not a bug."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true,
+  "notes": {
+    "queue_field_name": "Backend expects guest_name (not added_by) in POST /queue body; frontend already uses guest_name correctly.",
+    "youtube_iframe": "Verified only that the youtube-player container mounts; actual video playback not tested (headless).",
+    "credentials_used": "Admin password 'ADMIN' from /app/memory/test_credentials.md"
+  }
+}

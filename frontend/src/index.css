@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f8f9fa;
+  color: #0a0a0a;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+button, a, input {
+  transition: transform 0.18s ease, opacity 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.grain-bg {
+  background-image: radial-gradient(circle at 20% 10%, rgba(255, 59, 48, 0.04), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(10, 10, 10, 0.04), transparent 40%);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 32%;
+    --accent: 3 100% 59%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 3 100% 59%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 5% 90%;
+    --input: 240 5% 90%;
+    --ring: 0 0% 4%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

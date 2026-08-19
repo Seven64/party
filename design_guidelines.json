@@ -1,0 +1,120 @@
+{
+  "theme": "Light Minimal ('hell, klare Typografie')",
+  "colors": {
+    "primary": "#0A0A0A",
+    "primary_foreground": "#FFFFFF",
+    "accent": "#FF3B30",
+    "accent_foreground": "#FFFFFF",
+    "background": "#F8F9FA",
+    "surface": "#FFFFFF",
+    "border": "#E4E4E7",
+    "text_main": "#0A0A0A",
+    "text_muted": "#52525B"
+  },
+  "typography": {
+    "headings": "Outfit, sans-serif (Weights: 500, 700) - modern, geometric, clean",
+    "body": "Plus Jakarta Sans, sans-serif (Weights: 400, 500) - highly legible, clear",
+    "rules": [
+      "Use tracking-tight for all headings larger than text-2xl.",
+      "Uppercase with tracking-widest for overlines, labels, and badges.",
+      "Avoid Inter or Roboto completely."
+    ]
+  },
+  "components": {
+    "buttons": {
+      "style": "pill-shaped (rounded-full), sharp high-contrast. Primary buttons are bg-[#0A0A0A] text-white. Accent/destructive buttons are bg-[#FF3B30].",
+      "interactions": "Hover states must include a slight scale down (active:scale-95) and opacity shift."
+    },
+    "cards": {
+      "style": "Minimalist, no heavy drop shadows. Use border border-zinc-200/border bg-white rounded-2xl or rounded-3xl.",
+      "padding": "Generous inner padding (p-4 to p-6)."
+    },
+    "inputs": {
+      "style": "Pill-shaped (rounded-full) or large soft-rounded rectangles. border-zinc-200 focus:border-[#0A0A0A] focus:ring-1 focus:ring-[#0A0A0A]."
+    },
+    "badges": {
+      "style": "Priority badge should be highly visible: bg-[#FF3B30] text-white rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider."
+    }
+  },
+  "layouts": {
+    "Admin_Dashboard": "Bento-grid desktop layout. Large QR code card spanning multiple rows. Clear 'Create Party' button. Minimalist list of past/active parties.",
+    "Admin_Party_Control": "Split-screen desktop view. Left column (sticky): YouTube player embedded, current track info overlay, massive playback controls. Right column (scrollable): Live Queue. Priority tracks visually separated or pinned to the top of the 'upcoming' section.",
+    "Guest_Mobile_View": "Mobile-first layout. Sticky bottom navigation or sticky top search bar. Full-bleed lists for search results and queue. Large touch targets for adding tracks to the queue. Modal/Drawer for 'Add with Priority' confirmation."
+  },
+  "motion": {
+    "rules": [
+      "Use spring animations (framer-motion) for adding to queue (slide up/in).",
+      "Micro-interactions on all buttons (scale down on press).",
+      "Smooth list transitions when queue reorders."
+    ]
+  },
+  "screens": [
+    {
+      "name": "Admin Login & Dashboard",
+      "description": "A pristine, airy page with a subtle abstract light background. A central glass-like or solid white card for login. Once logged in, a Bento grid showing the Active Party (with a massive, scannable QR code), quick actions, and recent history. High contrast typography."
+    },
+    {
+      "name": "Admin Party Control View (Host Player)",
+      "description": "Desktop-optimized. The left half is dedicated to 'Now Playing'—featuring a customized overlay over the YouTube iframe to hide default YT controls where possible, showing a clean progress bar, large play/pause/skip buttons, and a prominent QR code in the corner. The right half is a clean, vertically scrolling list of the Queue. Priority items have a distinct red dot or red border."
+    },
+    {
+      "name": "Guest Join Page",
+      "description": "Mobile-optimized. Ultra-minimalist. A simple greeting, a large text input for 'Your Name', and a chunky pill-shaped 'Join Party' button at the bottom of the screen. Background is pure white."
+    },
+    {
+      "name": "Guest Search & Queue View",
+      "description": "Mobile-optimized. A floating, pill-shaped search bar at the top with a subtle shadow. Below it, tabs for 'Search' and 'Queue'. Search results are dense but clean list items with square album art, title, artist, and a '+' button. Clicking '+' opens a sleek bottom drawer asking 'Standard or Priority Add?'. The Queue tab shows the live playing song frozen at the top, and the upcoming tracks scrolling below."
+    }
+  ],
+  "accessibility": [
+    "All interactive elements MUST have data-testid attributes.",
+    "Minimum 4.5:1 contrast ratio for text.",
+    "Focus rings visible on keyboard navigation."
+  ],
+  "media": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTF8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMG1pbmltYWwlMjBsaWdodCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzg3MTczNDg5fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract wavy light minimal background",
+        "category": "Admin Login Background"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxwYXJ0eSUyMGNyb3dkJTIwY29uY2VydHxlbnwwfHx8fDE3ODcxNzM0ODl8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Party crowd with golden concert lights",
+        "category": "Guest Join or Party Active State Hero Cover"
+      }
+    ]
+  },
+  "libraries": {
+    "icons": "lucide-react (already installed)",
+    "components": "shadcn/ui (Cards, Inputs, Buttons, Tabs, Dialogs/Drawers).",
+    "motion": "framer-motion for queue reordering and bottom sheets."
+  },
+  "instructions_to_main_agent": [
+    "Use Outfit for headings and Plus Jakarta Sans for body. Add these via Google Fonts in index.html.",
+    "Implement the UI using a very light, high-contrast minimal aesthetic. Do NOT use heavy shadows, prefer 1px borders (border-zinc-200) and flat surfaces.",
+    "For the Guest View, ensure it looks and feels like a native mobile app (use h-screen, fixed bottom nav or top sticky search, avoid desktop-like sidebars).",
+    "For the Host View, leverage a split-screen or 2-column layout to make use of desktop space.",
+    "Priority items must clearly stand out using the accent color (#FF3B30).",
+    "Use Lucide-react for all icons. Ensure icons are appropriately sized (w-5 h-5 or similar).",
+    "All buttons must have a data-testid. Examples: data-testid='guest-join-button', data-testid='search-input', data-testid='add-to-queue-btn'.",
+    "Add transition: transform 0.2s ease, opacity 0.2s ease for interactive elements. DO NOT use transition: all.",
+    "CRITICAL: DO NOT use complete transparent background in header, overlays, any surface that has content under it. Example: Dropdown with transparent background.",
+    "You have .js files not .tsx files, so write all React components using JSX in .js files."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Prioritize using pre-existing components from src/components/ui when applicable.",
+    "Use sonner for toasts, located in /app/src/components/ui/sonner.js or install if missing."
+  ]
+}
